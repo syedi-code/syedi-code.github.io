@@ -21,25 +21,34 @@ let dtEnd;
 let timescale = 0.03;
 
 let loops = [];
+let flag_echo = false;
+let echoes_drawn = 0;
+let echoes = [];
+let trailLength = 50;
+let trail = [];
 
-let num_loops = 192; //I like: 96, 192
-let loop_width; //I like: 30
+let num_loops = 64;
 let loop_height;
+let max_height = 300;
+let loop_width = 30;
 let anim = 0;
 
 function setup() {
   createCanvas(W, H);
   strokeWeight(1);
   fill(255);
-  frameRate(60);
 
   translate(-width/2, height/2);
   for (let i = 0; i < num_loops; i++) {
     let x = map(i, 0, num_loops, -width/2 + 50, width/2 - 50);
-    let height = map(sin(i * PI / num_loops * 4), 0, 1, 0, 150);
-    let loop_width = map(sin(i * PI / num_loops * 4), 0, 1, 0, 30);
-    let r = map(sin(i * PI / num_loops * 4), 0, 1, 5, 2);
-    loop = new Loop(x, 0, loop_width, height, r, i * PI / num_loops);
+    //let height = map(noise(i  * 20), 0, 1, 0, loop_height);
+    let wavelength = 50;
+
+    loop_height = map(sin(i * wavelength), 0, TWO_PI, 0, max_height) + (noise(i * 20) * 5); // creates sine wave pattern in branches
+    loop_width = i % 2 == 0 ? map(sin(i * PI / num_loops * 4), 0, 1, 0, 30) : 40; // controls if tips connect
+
+    let r = map(noise(i  * 20), 0, 1, 2, 17.5); // end result should range from 2 - 17.5
+    loop = new Loop(x, 0, loop_width, loop_height, r, 0);
     loops.push(loop);
   }
 
@@ -48,38 +57,37 @@ function setup() {
 }
 
 function draw() {
-  let file_name = 'frame' + frameCount;
-  var numSubSamples = (preview == false) ? NUM_SUBSAMPLES : 1;
-  blendMode(BLEND); //lets the background function to clear the canvas
-  background(255, 253, 208);
-  noStroke();
+  translate(width/2, height/2);
+  rotate()
 
+  // DRAW HERE
   push();
-  translate(width / 2, height / 2);
+  translate(0, 0);
+  background(255);
   update();
-  for (let i = 0; i < 8; i++) {
-    rotate(PI / 4);
+
+  let num_reflections = 4;
+  for (let i = 0; i < num_reflections; i++) {
+    rotate(i * PI / num_reflections);
     for (let loop of loops) {
+      push();
       loop.draw();          
+      pop();
     }
   }
   pop();
-
-  //saveCanvas(file_name, 'png');
 }
 
 function update() {
   anim = map(dt, 0, dtEnd, 0, 1);
+  //console.log(anim);
 
   if (dt < dtEnd) {
-    //timescale = map_timescale();
+    timescale = map_timescale();
     dt += timescale;
   } else {
+    //console.log("reset");
     dt = 0;
-  }
-
-  if (anim > 0.9999) {
-    noLoop();
   }
 }
 
@@ -89,35 +97,7 @@ function ease_in_out_cubic(n) {
 }
 
 function map_timescale() {
-  return anim < 0.75 ? map(anim, 0.25, 0.75, 0.01, 0.003) : map(anim, 0.75, 1, 0.003, 0.01);
-}
-
-function draw_chromatic_aberration() {
-  blendMode(ADD); // RGB channels overlapping sum to white
-  for (let i=0; i<numSubSamples; i++){
-      push();
-      t = map(frameCount-1 + i*SHUTTER_ANGLE/numSubSamples, 0, NUM_FRAMES, 0, T)%T; //sub-sampled time
-      fill(255);
-      translate(W/2,H/2);
-      for (let c=0; c<3;c ++){ // for each color RGB
-          var tc = t - CHROM_DT*c;  // for chromatic aberration, offset time for each color
-          colorc = color(colorsCS[c]);
-          colorc.setAlpha(255/numSubSamples); // adjust transparency for num of sub-samples
-          fill(colorc);
-          
-          // DRAW HERE
-          push();
-          translate(0, 0);
-          fill(0);
-          update();
-          for (let i = 0; i < 8; i++) {
-            rotate(PI / 4);
-            for (let loop of loops) {
-              loop.draw();          
-            }
-          }
-          pop();
-      }
-      pop();
-  }
+  let max = 0.03;
+  let min = 0.01;
+  return anim < 0.75 ? map(anim, 0.25, 0.75, max, min) : map(anim, 0.75, 1, min, max);
 }

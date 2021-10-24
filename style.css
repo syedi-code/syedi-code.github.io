@@ -1,8 +1,73 @@
 html, body {
-  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  margin: 20px;
   padding: 0;
 }
 
 canvas {
+  margin: auto;
   display: block;
+}
+
+.site-header {
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+
+  /* "to left" / "to right" - affects initial color */
+  background: linear-gradient(to left, white 50%, #6ba4ff 50%) right;
+  background-size: 200%;
+  transition: .5s ease-out;
+}
+
+.site-header:hover {
+  background-position: left;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.nav-links {
+  display: table;
+  font-size: 14px;
+  font-weight: bold;
+  width: max-content;
+  margin: 0;
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+}
+
+#contact {
+  background: linear-gradient(to left, white 50%, #64ed6a 50%) right;
+  background-size: 200%;
+  transition: .5s ease-out;
+}
+
+#contact:hover {
+  background-position: left;
+}
+
+#portfolio {
+  background: linear-gradient(to left, white 50%, #64ed6a 50%) right;
+  background-size: 200%;
+  transition: .5s ease-out;
+}
+
+#portfolio:hover {
+  background-position: left;
+}
+
+#github {
+  position: absolute;
+  background: linear-gradient(to left, white 50%, #eb4242 50%) right;
+  background-size: 200%;
+  transition: .5s ease-out;
+}
+
+#github:hover {
+  background-position: left;
 }

@@ -14,23 +14,22 @@ class Loop {
         this.offset = time_offset;
         this.dtOffset = dt + this.offset;
         this.dtOffsetEnd = dtEnd + this.offset;
-
-        this.r_offset = map(dist(0, 0, this.x, this.y), 0, 100, 0, 35);
-        this.color1 = createVector(149 + this.r_offset, 189, 220);
-        this.color2 = createVector(201 + this.r_offset, 84, 162);
     }
 
     draw() {
-        let r = anim < 0.5 ? map(anim, 0, 0.5, this.color1.x, this.color2.x) : map(anim, 0.5, 1, this.color2.x, this.color1.x); 
-        let g = anim < 0.5 ? map(anim, 0, 0.5, this.color1.y, this.color2.y) : map(anim, 0.5, 1, this.color2.y, this.color1.y); 
-        let b = anim < 0.5 ? map(anim, 0, 0.5, this.color1.z, this.color2.z) : map(anim, 0.5, 1, this.color2.z, this.color1.z); 
-
         this.position_one = createVector(this.x - this.width/2 + this.path_one_x(), this.y - this.height/2 + this.path_one_y());
         this.position_two = createVector(this.x + this.width/2 + this.path_two_x(), this.y + this.height/2 + this.path_two_y());
-        this.r = map(sin(dt), -1, 1, this.r_base - 1, this.r_base + 1);
+        
+        this.r = min(map(dist(this.position_one.x, this.position_one.y, 0, 0), 0, max_height, 17.5, 2), map(dist(this.position_two.x, this.position_two.y, 0, 0), 0, max_height, 17.5, 2));
 
         push();
-        fill(r, g, b);
+        colorMode(HSL, 255)
+
+        let h = map(sin(this.r + dt), -1, 1, 250, 0)
+
+        fill(h, 250, 200);
+        strokeWeight(0.25);
+        stroke(0, 0, 0);
         circle(this.position_one.x, this.position_one.y, this.r);
         circle(this.position_two.x, this.position_two.y, this.r);
         pop();
