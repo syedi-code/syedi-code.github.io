@@ -41,6 +41,16 @@ h2 {
   text-decoration: none;
 }
 
+#about {
+  background: linear-gradient(to left, white 50%, #c066ed 50%) right;
+  background-size: 200%;
+  transition: .5s ease-out;
+}
+
+#about:hover {
+  background-position: left;
+}
+
 #contact {
   background: linear-gradient(to left, white 50%, #64ed6a 50%) right;
   background-size: 200%;
@@ -52,7 +62,7 @@ h2 {
 }
 
 #portfolio {
-  background: linear-gradient(to left, white 50%, #64ed6a 50%) right;
+  background: linear-gradient(to left, white 50%, #fcc203 50%) right;
   background-size: 200%;
   transition: .5s ease-out;
 }
@@ -71,3 +81,4 @@ h2 {
 #github:hover {
   background-position: left;
 }
+
