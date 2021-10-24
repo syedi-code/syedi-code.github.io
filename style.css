@@ -13,6 +13,7 @@ canvas {
   font-size: 24px;
   font-weight: bold;
   display: inline-block;
+  text-decoration: none;
 
   /* "to left" / "to right" - affects initial color */
   background: linear-gradient(to left, white 50%, #6ba4ff 50%) right;
