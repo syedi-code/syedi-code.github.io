@@ -45,45 +45,69 @@ h2 {
 
 #about {
   display: table;
+}
+
+#contact {
+  display: table;
+}
+
+#portfolio {
+  display: table;
+}
+
+#github {
+  display: table;
+}
+
+.hover-purple {
   background: linear-gradient(to left, white 50%, #c066ed 50%) right;
   background-size: 200%;
   transition: .5s ease-out;
 }
 
-#about:hover {
+.hover-purple:hover {
   background-position: left;
 }
 
-#contact {
-  display: table;
+.hover-green {
   background: linear-gradient(to left, white 50%, #64ed6a 50%) right;
   background-size: 200%;
   transition: .5s ease-out;
 }
 
-#contact:hover {
+.hover-green:hover {
   background-position: left;
 }
 
-#portfolio {
-  display: table;
+.hover-orange {
   background: linear-gradient(to left, white 50%, #fcc203 50%) right;
   background-size: 200%;
   transition: .5s ease-out;
 }
 
-#portfolio:hover {
+.hover-orange:hover {
   background-position: left;
 }
 
-#github {
-  display: table;
+.hover-red {
   background: linear-gradient(to left, white 50%, #eb4242 50%) right;
   background-size: 200%;
   transition: .5s ease-out;
 }
 
-#github:hover {
+.hover-red:hover {
+  background-position: left;
+}
+
+.about:hover > .hover-orange {
+  background-position: left;
+}
+
+.about:hover > .hover-red {
+  background-position: left;
+}
+
+.about:hover > .hover-purple {
   background-position: left;
 }
 
