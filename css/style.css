@@ -13,22 +13,24 @@ canvas {
   font-size: 24px;
   font-weight: bold;
   color: black;
-  display: table;
+  display: inline-table;
   text-decoration: none;
-
-  /* "to left" / "to right" - affects initial color */
-  background: linear-gradient(to left, white 50%, #6ba4ff 50%) right;
-  background-size: 200%;
-  transition: .5s ease-out;
-}
-
-.site-header:hover {
-  background-position: left;
 }
 
 .site-header a:hover, a:visited, a:link, a:active {
   color: black;
   text-decoration: none !important;
+}
+
+#icon-bar {
+  display: inline-table;
+  position: relative;
+  padding-left: 5px;
+  font-size: 20px;
+}
+
+i {
+  margin: 2px;
 }
 
 h2 {
@@ -70,6 +72,16 @@ h2 {
 #github {
   display: table;
 } */
+
+.hover-blue {
+  background: linear-gradient(to left, white 50%, #6ba4ff 50%) right;
+  background-size: 200%;
+  transition: .5s ease-out;
+}
+
+.hover-blue:hover {
+  background-position: left;
+}
 
 .hover-purple {
   background: linear-gradient(to left, white 50%, #c066ed 50%) right;
