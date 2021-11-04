@@ -58,7 +58,8 @@ function setup() {
 
 function draw() {
   translate(width/2, height/2);
-  rotate()
+  shearX(mouseX / width / 4)
+  shearY(mouseY / height / 4)
 
   // DRAW HERE
   push();
