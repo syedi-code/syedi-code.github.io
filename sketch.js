@@ -1,15 +1,5 @@
 var W = 600;
 var H = 600;                // canvas width and height
-var t;                      //init time
-const T = 1;                //loop period
-const NUM_FRAMES = 127;     //period frame number
-
-// Motion blur and chromatic shift settings - the first three values are adjustable
-const NUM_SUBSAMPLES = 25;     // sub-sampled sketches to take between the current and next frame
-const SHUTTER_ANGLE = 1;        // 1 will capture all the distance to the next frame
-const CHROM_ANGLE = 1;          // 1 will shift the different color channels (rgb)
-const CHROM_DT = CHROM_ANGLE*T/NUM_FRAMES/2;
-var preview = true;             // default is preview mode / this functionality could be deleted
 
 // define RGB colors for chromatic shift
 var colorsCS = ['#FF0000', '#00FF00', '#0000FF'];
@@ -58,8 +48,6 @@ function setup() {
 
 function draw() {
   translate(width/2, height/2);
-  shearX(mouseX / width / 4)
-  shearY(mouseY / height / 4)
 
   // DRAW HERE
   push();
