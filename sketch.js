@@ -1,92 +1,70 @@
-var W = 600;
-var H = 600;                // canvas width and height
+var particles = []
+var numParticles = 10
+var clearButton
 
-// define RGB colors for chromatic shift
-var colorsCS = ['#FF0000', '#00FF00', '#0000FF'];
-
-//Sketch parameters
-let dt;
-let sine_t = 0;
-let dtEnd;
-let timescale = 0.03;
-
-let loops = [];
-let flag_echo = false;
-let echoes_drawn = 0;
-let echoes = [];
-let trailLength = 50;
-let trail = [];
-
-let num_loops = 64;
-let loop_height;
-let max_height = 300;
-let loop_width = 30;
-let anim = 0;
+let container = document.getElementById('sketch')
 
 function setup() {
-  createCanvas(W, H);
-  strokeWeight(1);
-  fill(255);
-
-  translate(-width/2, height/2);
-  for (let i = 0; i < num_loops; i++) {
-    let x = map(i, 0, num_loops, -width/2 + 50, width/2 - 50);
-    //let height = map(noise(i  * 20), 0, 1, 0, loop_height);
-    let wavelength = 50;
-
-    loop_height = map(sin(i * wavelength), 0, TWO_PI, 0, max_height) + (noise(i * 20) * 5); // creates sine wave pattern in branches
-    loop_width = i % 2 == 0 ? map(sin(i * PI / num_loops * 4), 0, 1, 0, 30) : 40; // controls if tips connect
-
-    let r = map(noise(i  * 20), 0, 1, 2, 17.5); // end result should range from 2 - 17.5
-    loop = new Loop(x, 0, loop_width, loop_height, r, 0);
-    loops.push(loop);
+  let canvas = createCanvas(900, 550);
+  for (let i = 0; i < numParticles; i++) {
+    particles.push(new Particle(random(0, width), random(0, height), random(4, 15)));
   }
 
-  dt = 0;
-  dtEnd = TWO_PI;
+  clearButton = createButton('CLEAR CANVAS')
+  clearButton.mousePressed(clearCanvas)
+  canvas.parent(container)
+  clearButton.parent(container)
+  clearButton.style('max-width', width + 'px')
+  clearButton.addClass('clearButton')
+  clearButton.addClass('hover-blue')
+
+  colorMode(HSB, 255);
 }
 
 function draw() {
-  translate(width/2, height/2);
-
-  // DRAW HERE
-  push();
-  translate(0, 0);
   background(255);
-  update();
 
-  let num_reflections = 4;
-  for (let i = 0; i < num_reflections; i++) {
-    rotate(i * PI / num_reflections);
-    for (let loop of loops) {
-      push();
-      loop.draw();          
-      pop();
+  push()
+  stroke(0)
+  strokeWeight(3)
+  noFill()
+  rect(0, 0, width, height)
+  pop()
+
+  for (let p of particles) {
+    p.update()
+    p.display()
+    p.checkBoundaryCollision()
+  }
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = 0; j < particles.length; j++) {
+      if (i != j) {
+        particles[i].checkCollision(particles[j]);
+      }
     }
   }
-  pop();
 }
 
-function update() {
-  anim = map(dt, 0, dtEnd, 0, 1);
-  //console.log(anim);
+function mousePressed() {
+  var valid = true
+  
+  for (let p of particles) {
+    if ((mouseX < p.pos.x + p.r && mouseX > p.pos.x - p.r) && (mouseY < p.pos.y + p.r && mouseY > p.pos.y - p.r)) {
+      valid = false
+    }
+  }
 
-  if (dt < dtEnd) {
-    timescale = map_timescale();
-    dt += timescale;
-  } else {
-    //console.log("reset");
-    dt = 0;
+  if (mouseX > width || mouseY > height || mouseX < 0 || mouseY < 0) {
+    valid = false
+  }
+  
+  if (valid) {
+    particles.push(new Particle(mouseX, mouseY, random(4, 15)));
   }
 }
 
-//Input must be between 0 and 1
-function ease_in_out_cubic(n) {
-  return n < 0.5 ? (4 * n * n * n) : (1 - Math.pow(-2 * n + 2, 3) / 2);
-}
-
-function map_timescale() {
-  let max = 0.03;
-  let min = 0.01;
-  return anim < 0.75 ? map(anim, 0.25, 0.75, max, min) : map(anim, 0.75, 1, min, max);
+function clearCanvas() {
+  console.log("clear() called")
+  particles.length = 0
 }

@@ -67,11 +67,8 @@ h2 {
 
 #portfolio {
   display: table;
-}
-
-#github {
-  display: table;
 } */
+
 
 .hover-blue {
   background: linear-gradient(to left, white 50%, #6ba4ff 50%) right;
@@ -115,7 +112,7 @@ h2 {
 
 .hover-red {
   background: linear-gradient(to left, white 50%, #eb4242 50%) right;
-  background-size: 200%;
+  background-size: 201%;
   transition: .5s ease-out;
 }
 
@@ -127,12 +124,48 @@ h2 {
   background-position: left;
 }
 
-.about:hover > .hover-red {
+.portfolio:hover > .hover-red {
   background-position: left;
 }
 
 .about:hover > .hover-purple {
   background-position: left;
+}
+
+#sketch-prompt {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+#sketch-container {
+  min-height: -webkit-fill-available; /*mobile viewport bug fix*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#sketch {
+  position: relative;
+}
+
+.clearButton {
+  border: solid 1px;
+  color: black;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  width: 150px;
+  height: 50px;
+  font-size: 16px;
+}
+
+.clearButton:hover {
+  cursor: pointer;
+}
+
+canvas {
+  margin-bottom: 10px;
 }
 
 .portrait {
