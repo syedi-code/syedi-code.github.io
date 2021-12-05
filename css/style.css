@@ -1,5 +1,5 @@
 html, body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', "Segoe UI", "Helvetica Neue", sans-serif;
   margin: 20px;
   padding: 0;
 }
@@ -8,6 +8,8 @@ canvas {
   margin: auto;
   display: block;
 }
+
+/* header styling */
 
 .site-header {
   font-size: 24px;
@@ -50,25 +52,12 @@ h2 {
 }
 
 .nav {
-  /* position: relative; */
-  /* float: left; */
   display: inline-table;
   margin-right: 10px;
   margin-top: 10px;
 }
 
-/* #about {
-  display: table;
-}
-
-#contact {
-  display: table;
-}
-
-#portfolio {
-  display: table;
-} */
-
+/* hover effects */
 
 .hover-blue {
   background: linear-gradient(to left, white 50%, #6ba4ff 50%) right;
@@ -132,6 +121,8 @@ h2 {
   background-position: left;
 }
 
+/* homepage sketch styling */
+
 #sketch-prompt {
   font-weight: 600;
   margin-bottom: 5px;
@@ -168,6 +159,8 @@ canvas {
   margin-bottom: 10px;
 }
 
+/* about.html styling */
+
 .portrait {
   display: block;
   margin-left: auto;
@@ -195,6 +188,8 @@ canvas {
   text-align: center;
 }
 
+/* portfolio.html styling */
+
 #gallery-title {
   font-weight: bold;
   font-size: 20px;
@@ -207,14 +202,70 @@ canvas {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 900px;
+  max-width: 1100px;
 
   margin-left: auto;
   margin-right: auto;
 }
 
 #sketch-gallery img {
-  padding: 15px;
+  padding: 25px;
   min-width: 75px;
   flex: 0 0 400px;
+}
+
+/* blog.html styling */
+
+#blog {
+  min-height: -webkit-fill-available; /*mobile viewport bug fix*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#posts {
+  position: relative;
+  max-width: 820px;
+  margin-top: 20px;
+}
+
+#post {
+  margin-bottom: 100px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-left: 1.5px solid #8c8c8c;
+  border-right: 1.5px solid #8c8c8c;
+}
+
+#post-date-time {
+  font-family: 'Space Mono', monospace;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+#post-title {
+  margin-top: 6px;
+  margin-bottom: 0px;
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+  display: inline-table;
+  text-decoration: none;
+  line-height: 110%;
+}
+
+#post-author {
+  margin-top: 6px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+}
+
+#post-body {
+  font-family: 'PT Serif', serif;
+  font-size: 18px;
+}
+
+hr {
+  color: #e0e0e0;
 }
