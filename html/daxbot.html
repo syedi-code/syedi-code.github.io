@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog Post Title</title>
+        <link rel="stylesheet" type="text/css" href="../css/style_dax.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+        <link href="../css/all.css" rel="stylesheet">
+    </head>
+    <body>
+        <section id="header">
+            <a href="index.html">
+              <div class="site-header hover-blue">Ibrahim Syed</div>
+            </a>
+            <div id="icon-bar">
+              <a href="mailto:syedi@oregonstate.edu" target="_blank" rel="noopener noreferrer">
+                <i class="far fa-envelope hover-blue"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/ibrahim-syed-a93316220/" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin hover-blue"></i>
+              </a>
+              <a href="https://github.com/syedi-code" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github hover-blue"></i>
+              </a>
+            </div>
+        </section>
+
+        <h2>Digital Art and Programming</h2>
+
+        <div class="nav-links">
+          <a href="html/about.html">
+            <div id="about" class="hover-purple nav">About</div>
+          </a>
+          <a href="html/daxbot.html">
+            <div id="portfolio" class="hover-orange nav">Designing Sound for Daxbot</div>
+          </a>
+          <a href="html/blog.html">    
+            <div id="github" class="hover-red nav">Blog</div>
+          </a>
+        </div>
+        
+        <div class="sidebar">
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#body">Body</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </div>
+        
+        <main>
+            <div id="content">
+                <h1 id="header header-font">Designing Sound for Daxbot</h1>
+                <h2 id="introduction header-font">Introduction</h2>
+                <p>Sound is an essential yet under-studied way for robots to communicate with humans. When designed well, robot sound can improve aspects of human-robot interaction from social perception to team fluency, but at its worst, robot sound can discourage the use of robots altogether.</p>
+                
+                <p>Building off of previous work in the sound for robotics field, OSU graduate student Brian Zhang and I partnered with Philomath-based company Dax to design informative sound cues for their Daxbot food delivery robot. Dax is unique in the fact that it is designed primarily to interface with humans; this design tendency is visible in the robot’s swiveling neck and faceplate graphics which employ expressive, digital eyes. As opposed to our previous work [1], which primarily used smaller, more ‘passive’ robots, Dax has a variety of ways in which it could relay information to the humans that it works alongside - for the purposes of our sound design work, it means that we are not concerned with conveying informational cues through sound alone.
+                </p>
+
+                <p>There are two distinct components to this project which will be talked about in-depth here: sound design and software engineering. As the sound designer, I was tasked with creating a new set of sound samples for Daxbot, and Brian handled writing the software that would deploy these sounds as well as designing our study to gather responses to these sounds. Our process spanned many months and was broken down into four formal stages which will serve as the structure of this paper: Empathize, Define, Ideate, and Prototype.</p>
+                
+                <h2 id="body">Body</h2>
+                <p>Our first design phase is the ‘Empathize’ phase. Prior to starting this project, neither Brian nor I had experience interacting with the Daxbot. In order for us to improve upon its human-robot interaction, we had to assume the role of a customer and understand what impressions Dax leaves upon the people it interacts with. We wanted to get a sense of what sounds were currently in place on the robot, how it expressed itself visibly during deliveries, and how these physical expressions worked in tandem with its audio cues. Repeated visits to Philomath to order from Dax allowed us to closely study every step of the delivery process: receiving the order from a restaurant, routing to a customer’s location, and completing the delivery.</p>
+
+                <p>There were some key takeaways from our Empathize phase. In terms of sound, we identified a handful of short, synthesized melodic phrases that would play at various times during the routing and delivery phases. These sounds only occurred when Dax was in the process of interacting with a person, but did not seem to have any identifiable triggers. Additionally, at certain points when interacting with Dax, the robot expresses itself through the eyes on its faceplate, transforming them into hearts or blinking, and nods or shakes its head. It does much expression and information relay through these physical actions, and only sometimes does sound accompany them.</p>
+
+                <h2 id="define">Define</h2>
+                <p>After repeating this process a handful of times, there was one portion of this process that could be improved via sonification: the final delivery interaction. This interaction starts when Dax arrives at the customer’s location, and can be described as a four-part sequence: Dax stops in front of the customer; the customer shows Dax a QR code pertaining to their order; Dax opens the cargo bay that comprises its body, revealing the food inside; the customer provides Dax a ‘thumbs up,’ Dax closes its bay, and travels away. Since there are many distinct steps to this particular interaction, sound could be added here with the intention of making each step more fluid, interactive, and easily navigable. Additionally, this interaction is usually the only stage where customers will actually engage with Daxbot, so this ends up leaving the biggest impression on them. With the overall goal of our project in mind (improving Dax’s human-robot interaction and using sound to make it more amicable), the ‘Ideate’ phase began. This phase marks our beginning stage of sound and software design. Our previous work explored the process of designing emotive sound cues for robots quite in-depth, and many of the ideas explored there provided guidance as to our sound design here.</p>
+
+                <h2 id="ideate">Ideate</h2>
+                <p>The purpose of the 'Ideate' phase was to establish the desired sound profile for Dax's voice. Relevant literature and existing practices in the field were reviewed to gain insights from researchers, roboticists, and sound designers who have tackled the design of intentional sound for robots. One discussed approach involved text-to-speech voice synthesis, whereby Dax would replicate human speech and deliver complete sentences to customers. However, we excluded this option from our project due to concerns that a human voice might be ill-suited for this particular robot model, potentially causing customers to perceive it as eerie or unsettling. Another idea explored was the use of non-linguistic 'utterances'—brief, speech-like sound fragments that simulate the dynamic nature of rapid spoken words, explored in research pertaining to child-robot interaction [2]. Ultimately, we dismissed utterances for similar reasons as voice synthesis. Although both methods have their place in human-robot interaction, we desired simple, friendly, and predictable sounds for Dax. Consequently, we opted for short synthesized musical phrases and a purposefully designed sound library that could be triggered during different stages of Dax's delivery. This approach aligns with the existing sound framework already integrated into Dax, but our sounds would be intentionally tailored to fulfill our objectives. Previous research in robot sonification has demonstrated the effectiveness of this sound type in conveying emotion and information within this context [3].</p>
+
+                <p>In the subsequent stage of the ideation process, our focus shifted towards generating a preliminary collection of sounds based on the ideas we had previously discussed. To accomplish this, I opted to use Ableton as my preferred digital audio workstation. Familiarity played a large role in this selection, as Ableton offered stock instruments with straightforward synthesis capabilities and automation functionalities. Another advantage of relying solely on stock instruments was the convenience of modifying and exporting my sound design sessions from any device equipped with an active license. This flexibility proved invaluable during the prototyping phase, when on-site adjustments were necessary.</p>
+
+                <p>To begin the sound design process, I began by creating three distinct synthesizer patches using Ableton's Operator and Wavetable instruments. For those unacquainted with these specific instruments, Operator acts as a frequency modulation (FM) synthesizer, while Wavetable specializes in wavetable synthesis. FM synthesis revolves around modulating the pitch of one signal using another, and this type of synthesis lends itself toward creating bright, metallic sounds. Wavetable synthesis, on the other hand, combines a spectrum of waveforms into a ‘wavetable,’ and allows for fluid, shifting timbres when automation is applied. To explore the sonic possibilities of these sounds across various contexts, I created simple melodic phrases consisting of two or three notes played in rapid succession, each with different durations. The primary objective in developing these preliminary melodies and synthesizer patches was to loosely emulate the robotic sounds prevalent in popular science-fiction media, calling upon the characteristics of WALL-E or R2-D2 from Star Wars, informed by previous investigations of transformative sound for robots [4].</p>
+
+                <p>The initial patch I created using the Operator instrument aimed to replicate the raw, metallic timbre of Dax's original sound repertoire. In contrast, the second patch, constructed with Wavetable, was derived from one of the stock 'formant' presets, incorporating slight randomization adjustments to a low-pass filter and oscillator shape. Lastly, the third patch, again utilizing Wavetable, involved layering two distinct sine waves.</p>
+
+                <p>Of these three prototypes, our team decided upon the formant Wavetable patch to be used for the sounds moving forward. The formant patch offered voice-like qualities which would help humanize Dax a little bit more without being conflated for an actual vocal sample, but was musical enough to avoid issues identified with utterances and voice synthesis in the first steps of our ‘Ideate’ phase.</p>
+
+                <p>With a sound profile established, the subsequent phase of sound design involved creating melodic phrases to be played by the robot utilizing the selected synthesizer patch. Building upon the concept of vocal-related sounds, the objective was to model melodies after vocal phrases while preserving certain harmonic qualities. To achieve this, I began by recording myself speaking specific phrases such as "Duuuude...", "Ta-daaa!", and "Yaaay!" Subsequently, utilizing the monophonic Wavetable patch, I aimed to emulate the dynamics present in these vocal phrases. Careful consideration was given to factors such as the duration of certain words and how their pitch changed throughout the phrases, but it should be noted that the intention was not to precisely replicate these sonic characteristics, as a sense of tonal musicality was to be desired in the final sounds.</p>
+
+                <p>To approximate the intonations captured in the vocal recordings, there are three key parameters being automated throughout the Dax sound samples: the low-pass filter frequency cutoff, detune, and amplitude envelope release. Modulating the low-pass filter introduced compelling variations to the sound's dynamics, while controlling the amplitude envelope release allowed for certain "words" in each melodic phrase to linger or truncate, depending on their vocalization in the original recordings. The automation of detune provided precise control over subtle pitch fluctuations that manifested as the phrases were vocalized. However, it had certain drawbacks; namely, automating detune on our more positive sounds created a sonic dissonance that hindered the clarity of the intended emotion. Consequently, I reserved the automation of detune for specific sounds meant to convey displeasure, confusion, or other negative affect.</p>
+
+                <p>When designing the sound bank, the sounds were loosely divided into two categories: happy and sad. Our team's previous work, titled "Toward Generative Sound Cues for Robots using Emotive Musification," established a relationship between emotional affect and specific sound parameters such as sound brightness, octave, and scale [1] by drawing upon previous research which defined relationships between music and emotional perception [5]. This research informed the approach taken to designing the sounds, approaching them based on the emotions they were intended to convey. For example, the "Duuuude..." sample was designed to express disappointment and sadness, while “Yay!” was excitement and happiness. Parameter automation, specifically the filter frequency cutoff and detune, were used to create a darker tone and convey a sense that something was not right. In contrast, the happier sounds had brighter qualities with higher filter cutoffs and no detune automation. Additionally, the melodic structure of the "happy" phrases primarily utilized major 3rd and full octave intervals to create comfortable and pleasant sound cues for the listener.</p>
+
+                <p>After a brief period dedicated to developing and refining the sound bank, a set of approximately eight samples was prepared for deployment onto the robot during the final prototyping phase. Furthermore, I recreated the original set of samples used by Dax using our newly designed synthesizer patch, aiming to closely replicate their dynamics. This allowed for a direct comparison and contrast between the newly designed sounds and the ones already employed by Dax. A scheduled meeting with Dax was arranged to load our sound bank onto the robot and conduct in-person testing. Prior to the meeting, we created a brief mockup by overlaying our samples onto a video depicting ourselves retrieving food from Dax during the concluding stages of its delivery. This exercise provided a preview of how the sounds would be perceived during an interaction.</p>
+
+                <h3 id="prototype">Prototype</h3>
+                <p>During the meeting with Dax, the sounds were deployed onto the robot and played through its speakers. We took the opportunity to listen to the sounds both inside the Dax headquarters and outside on the sidewalk to gain an understanding of the acoustic environments in which Dax would operate. Conducting in-person tests provided valuable insights on necessary revisions for the phrases. One notable observation was that the sounds felt somewhat empty and structurally weak, particularly in the low-end frequency range when compared to the original sound set. Additionally, certain melodies intended to evoke positivity lacked sufficient emotional impact or failed to convey any discernible emotion at all (although it is important to note that during this evaluation, the sounds were played without any accompanying physical motion from Dax. Incorporating Dax's usual physical behavior addresses many of these concerns). Following this initial prototype, the sound bank underwent a revision.</p>
+
+                <p>In the revised version, most phrases were slightly extended in length. Furthermore, a sub bass element was added to the synthesizer patch to enhance the low-end frequencies in all the sounds. Modifications were also made to the melodic intervals of some phrases to convey specific emotions or ideas with clearer intentionality.</p>
+
+                <p>After the revision, our sound design work was concluded for the time being. The study, which was set to be deployed in about a week, required finalizing the sounds before it went live. Therefore, it is now appropriate to shift the focus towards discussing Brian's software for this project and our initial study design.</p>
+
+                <p>During the 'Ideate' phase, we identified our primary focus as sonifying Dax's 'delivery' interaction. We further divided this interaction into four distinct stages: Dax's approach, presenting the QR code, revealing the food, and Dax's departure. Since each of these actions occurs with every delivery, our study design centered around associating sound triggers with each stage, playing a specific phrase from our sound bank. Subsequently, customer responses would be recorded through post-order interviews to gauge their reactions to the sounds.</p>
+
+                <p>Brian's software was responsible for generating these triggers and deploying our sound bank. As a result, four sounds were programmed to play during the interaction, aligning with the four stages we outlined. Specifically, the "arrival" sound played when Dax first arrived at the customer's location, "yes" played when the QR code was presented, "ta-da" played when Dax's cargo bay opened, and "yay" played when the customer provided a thumbs up and the transaction was completed. Each of these sounds has been embedded below. This state system, linking sound triggers to specific robotic gestures, bears similarity to our previous work developing SonifyIt, a sound package for roboticists and sound designers [6].</p>
+
+                <h3 id="testing">Testing</h3>
+                <p>The following sections will discuss the methodology employed in our study. The study spanned four days, with two days dedicated to collecting responses for the baseline (original set) of Dax sounds, and the remaining two days focused on testing our experimental sounds. Our study design exclusively emphasized qualitative data, utilizing interviews and free response answers. During a delivery, Dax customers interacted with the robot while either the baseline or experimental sound set was deployed. Subsequently, Brian conducted in-person interviews to gather participants' responses. The interview questions and content were specifically designed to understand participants' reactions to our designed sounds. Participants were asked about their familiarity with the baseline sound set and their impressions of the new sound set in comparison.</p>
+
+                <p>The results of our initial study provided valuable insights, indicating the effectiveness of our designed sounds in enhancing Dax's informative nature during deliveries and improving overall interaction experience. The interview responses, on the whole, conveyed a positive reception towards the new sound set. Participants described the sounds as "nice," "adorable," "cute," and "cheery." One interviewee even noted that the sound bank made Dax feel more interactive, and another mentioned that the new sounds added more “character” to Dax. These responses align with our intended design philosophy of imbuing Dax with a more positive affect.</p>
+
+                <h3 id="online-study">Online Study</h3>
+                <p>Our follow-up study was launched online, created using Qualtrics and deployed via Prolific. The study utilized six different types of videos involving the Dax robot: two conditions (sound on and sound off) applied to three separate motions (drop-off food; passing by and noticing a person; being blocked by a person). Each of these motions had different sound profiles attached to them, using the samples from our experimental sound bank. The 'drop-off' motion utilized our "arrival," "yes," "ta-da," and "yay" sounds, similar to how they were used in our in-person study during Dax's drop-off interaction. The 'passing by' motion was sonified with our "arrival" sound, and in addition, Dax tilted its head and blinked or transformed its eyes at passersby. During the 'being blocked' motion, our "downward_no" sample played while Dax shook its head as a physical accompaniment.</p>
+
+                <p>We estimated a turnout of around a hundred participants for this follow-up study, and our methodology varied slightly as well. Given the anticipated opposite effects on affect, responses to 'drop-off' and 'passing by' were grouped into one set, while 'being blocked' constituted the other. To clarify, 'drop-off' and 'passing by' utilized our positively-designed sounds to enhance pleasantness in these interactions, whereas 'being blocked' naturally expressed discontent and employed our 'downward_no' sample to convey negativity. We anticipated contrasting responses to these interactions. In contrast to our in-person study that primarily focused on qualitative data, this study employed quantitative measures. We used the Robotics Social Attributes Scale (RoSAS) [7] as well as the Price Sensitivity Meter (PSM) [8]. RoSAS aims toward capturing participant perceptions of warmth, competence, discomfort, and customer purchasing interest, while the PSM analyzes customers’ perceived value of the robot and uses certain price point questions to provide an estimated delivery value.</p>
+
+                <h3 id="online-study-results">Online Study Results</h3>
+                <p>Analysis on warmth with positive valence added sounds (“yes”, “ta-da”, and “yay”) using a rANOVA demonstrated a significant increase in perceived warmth with the presence of our sounds. With our negative sounds, there was no significant difference, and in fact the results still trended toward an increase in perceived warmth even with our intended negative valence sound material (although this was something we had come across in our previous research in imbuing human-facing robots with emotional connotations through sound). Looking at all of the sounds, rANOVAs yielded significant differences in both Dax’s perceived competence and customers’ purchasing interest across the board. However, our results gathered using the PSM (Price Sensitivity Meter) did not yield significant differences. The PSM was geared towards asking participants how much they were willing to pay for delivery from Dax with and without the experimental sound set. It should be noted that an impediment to finding significant results using PSM could be derived from how the questions were framed; here, participants were specifically asked to provide whole number values, which obscures more minute differences in range of delivery price points. More information regarding these study results can be found in Brian’s dissertation, “Nonverbal Sound in Human-Robot Interaction: What, How, and Most of All Why.”</p>
+
+                <p>Overall, both studies demonstrated the effectiveness of our sounds in increasing perceived warmth, competence, and purchasing interest. Consequently, these results lend themselves toward supporting the effectiveness of our sound design process as a whole.</p>
+
+                <h3 id="Conclusion">Conclusion</h3>
+                <p>Throughout the iterative process of sound design and the subsequent studies conducted, our team made significant progress in enhancing the perception of Daxbot in the context of human-robot interaction. By employing a formal approach to sound selection, synthesis, and parameter manipulation, we successfully created a sound bank that effectively conveyed emotions, improved Dax's perceived warmth, and enhanced the overall user experience. The revisions made in response to user feedback and the subsequent deployment of the experimental sounds in the follow-up study provided further validation of the positive impact of our sound design choices. The analysis of both of our studies demonstrated a significant increase in perceived warmth with the presence of our positive valence sounds, while also revealing notable differences in perceived competence and purchasing interest across all sounds. These findings highlight the efficacy of our sound design process in human-robot interaction. This research contributes to the broader understanding of the role of nonverbal sound cues and paves the way for future advancements in designing more engaging and emotionally resonant interactions between humans and robots. By harnessing the potential of sound, we can continue to humanize robotic systems and create more meaningful and enjoyable experiences for users in the ever-evolving field of human-robot interaction.</p>
+                
+                <div id="video">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+                    <p>Caption: This is where a video should be embedded</p>
+                </div>
+                
+                <section id="playlist">
+                    <p>Audio Sample 1</p>
+                    <audio controls>
+                        <source src="audio/sample1.mp3" type="audio/mpeg">
+                    </audio>
+                    <audio controls>
+                        <source src="audio/sample2.mp3" type="audio/mpeg">
+                    </audio>
+                </section>
+                
+                <h2 id="conclusion">Conclusion</h2>
+                <p>Enter your conclusion text here.</p>
+            </div>
+        </main>
+    </body>
+</html>
