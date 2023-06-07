@@ -61,7 +61,7 @@ h2 {
 
 .hover-blue {
   background: linear-gradient(to left, white 50%, #6ba4ff 50%) right;
-  background-size: 200%;
+  background-size: 201%;
   transition: .5s ease-out;
 }
 
@@ -71,7 +71,7 @@ h2 {
 
 .hover-purple {
   background: linear-gradient(to left, white 50%, #c066ed 50%) right;
-  background-size: 200%;
+  background-size: 201%;
   transition: .5s ease-out;
 }
 
@@ -81,7 +81,7 @@ h2 {
 
 .hover-green {
   background: linear-gradient(to left, white 50%, #64ed6a 50%) right;
-  background-size: 300%;
+  background-size: 201%;
   transition: .5s ease-out;
 }
 
@@ -91,7 +91,7 @@ h2 {
 
 .hover-orange {
   background: linear-gradient(to left, white 50%, #fcc203 50%) right;
-  background-size: 200%;
+  background-size: 201%;
   transition: .5s ease-out;
 }
 
